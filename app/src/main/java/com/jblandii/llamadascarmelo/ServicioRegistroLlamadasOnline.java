@@ -15,5 +15,4 @@ import retrofit2.http.POST;
 public interface ServicioRegistroLlamadasOnline {
     @POST("llamadas")
     Call<Void> add(@Body Llamadas llamadas);
-    //Call<Void> add(@Field("tipo") String tipo, @Field("numero") String numero, @Field("inicio") Date inicio, @Field("fin") Date fin);
 }

@@ -26,7 +26,9 @@ public abstract class ReceptorLlamadas extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        //We listen to two intents.  The new outgoing call only tells us of an outgoing call.  We use it to get the number.
+        /*
+        Escucho dos intentos, lo uso para obtener el número.
+         */
         if (intent.getAction().equals("android.intent.action.NEW_OUTGOING_CALL")) {
             numeroGuardado = intent.getExtras().getString("android.intent.extra.PHONE_NUMBER");
         } else {
@@ -82,7 +84,6 @@ public abstract class ReceptorLlamadas extends BroadcastReceiver {
                 break;
             case TelephonyManager.CALL_STATE_IDLE:
                 if (ultimoEstado == TelephonyManager.CALL_STATE_RINGING) {
-                    //Ring but no pickup-  a miss
                     onMissedCall(context, numeroGuardado, horaLlamadaInicio);
                 } else if (entrante) {
                     onIncomingCallEnded(context, numeroGuardado, horaLlamadaInicio, new Date());
